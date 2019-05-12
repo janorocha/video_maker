@@ -10,8 +10,8 @@ async function robot(content) {
     async function fetchContentFromWikipedia(content){
         const algorithiaAutenticated = algorithmia(algorithmiaApiKey)
         const wikipediaAlgorithm = algorithiaAutenticated.algo('web/WikipediaParser/0.1.2')
-        const wikipediaResponde = await wikipediaAlgorithm.pipe(content.searchTerm)
-        const wikipediaContent = wikipediaResponde.get()
+        const wikipediaResponse = await wikipediaAlgorithm.pipe(content.searchTerm)
+        const wikipediaContent = wikipediaResponse.get()
         
         content.sourceContentOriginal = wikipediaContent.content
     }
@@ -42,7 +42,7 @@ async function robot(content) {
 
         function breakContentIntoSentences(content){
             content.sentences = []
-            
+
             const sentences = sentenceBoundaryDetection.sentences(content.sourceContentSanitized)
             sentences.forEach((sentence) => {
                 content.sentences.push({
