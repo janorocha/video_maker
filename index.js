@@ -25,7 +25,7 @@ async function start(){
         return selectedPrefixText
     }
 
-    console.log(JSON.stringify(content, null, 4))
+    console.log(JSON.stringify(content.sentences, null, 4))
 }
 
 start()
